@@ -1,0 +1,32 @@
+---
+title: "Blog Post 1"
+author: "Cecily Hansen"
+date: "2026-02-02"
+format: html
+---
+
+```{r}
+#install.packages("tidyverse")
+#install.packages("serieseIMDB")
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+
+attribution_studies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-08-12/attribution_studies.csv')
+```
+
+```{r}
+new <- attribution_studies|>
+  group_by(event_type) |>
+  summarize(
+    count = n()
+  )
+
+
+ggplot(data = new, aes(x = event_type, y = count)) +
+  geom_col(fill = "orange") + 
+  theme_minimal() +
+  labs(x = "Event Type", y = "Count", title = "Extreme events represented in attribution studies")
+
+```
+
