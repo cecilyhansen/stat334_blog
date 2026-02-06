@@ -1,19 +1,28 @@
 ---
 title: "Blog Post 1"
 author: "Cecily Hansen"
-date: "2026-02-02"
+date: "2026-02-05"
 format: html
 ---
 
+## Introduction
+
+  I am working with an extreme weather attribution study data set that I sourced from the Tidy Tuesday github (https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-08-12/readme.md). The dataset is from an article called 'Mapped: How climate change affects extreme weather around the world.' Attribution studies determine how much climate change affects the intensity, frequency, or impact of extreme weather. As climate change impacts become increasingly prevalent, these studies can be a valuable tool in determining human influence on extreme weather events. 
+  The data set has 744 observations of 14 variables. I am most interested in looking at 'event_type' and 'cb_region'. I want to look at what kind of extreme events are the most represented in attribution studies. I also want to think about what regions are the most common for attribution studies to be carried out in. 
+
+## Primary Visualizations
+
 ```{r}
 #install.packages("tidyverse")
-#install.packages("serieseIMDB")
 library(ggplot2)
 library(tidyr)
 library(dplyr)
 
 attribution_studies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-08-12/attribution_studies.csv')
 ```
+
+### Visualization 1 - Event Types
+  I chose to make a lollipop plot to represent what types of events are most represented in attribution studies. The data shows that heat and rain & flooding are the two most prevalent extreme weather events that are studied, followed by droughts and storms. We can infer from this that these are the weather events that are of the most concern to researchers. This makes sense because extreme flooding, as well as extreme heat and drought, can be detrimental to humans. These events can cause significant damage to property, agriculture, and cause loss of life. It is interesting to think about what weather events are the most studied and why. Floods and heat are dangerous and costly for humans, but how does the rest of the natural world react?
 
 ```{r}
 new <- attribution_studies|>
@@ -22,11 +31,35 @@ new <- attribution_studies|>
     count = n()
   )
 
-
-ggplot(data = new, aes(x = event_type, y = count)) +
-  geom_col(fill = "orange") + 
+ggplot(data = new, aes(x = count, y = event_type)) +
+  geom_segment(aes(xend = count, x = 0, yend = event_type)) +
+  geom_point() +
   theme_minimal() +
-  labs(x = "Event Type", y = "Count", title = "Extreme events represented in attribution studies")
+  labs(x = "Count", y = "Event type", title = "Extreme events represented in attribution studies")
 
 ```
+
+
+### Visualization 2
+  My second graph is a bar plot looking at what regions of the world attribution studies are focused on. The most studied regions are North America, Europe, and eastern/south-eastern Asia. However, North American and European countries are not the places where the most extreme weather events occur. They likely have the most attribution studies because they are the most well-funded to conduct research. In fact, the Global South is much more vulnerable to extreme weather. Undeveloped nations are often the most severely affected - countries like Haiti or the Philippines are prone to intense storms that have only worsened with human-driven climate change. This bar plot actually represents a major gap in the scientific field of extreme weather attribution. It is crucial that research is expanded to include the regions where global climate change is hitting the hardest, so we can understand more about just how much humans are changing the climate. 
+
+```{r}
+attribution_studies |>
+  group_by(cb_region) |>
+  summarize(
+    count = n()
+  ) |>
+  ggplot(aes(x = cb_region, y = count)) +
+  geom_col(fill = "skyblue") + 
+  coord_flip() +
+  theme_minimal() +
+  labs(x = "Region", y = "Count", title = "Attribution studies in different regions")
+
+
+```
+
+
+## Conclusion
+  If I had more time to look at this data, I think it would be interesting to compare it with climate change data, like temperature increase or sea level rise by region. It would be interesting to see if there is an inverse relationship between climate change affects and number of attribution studies. It would also be interesting to observe this data set over time and see if it changes. This was a limited approach to think about extreme weather and there are many more ways to think about it than just attribution studies. However, it is representative of the inequalities present in climate change research. 
+  My visualizations connect to class because I utilized the appropriate plots to represent categorical data - lollipop plots and bar plots. I also utilized different grammar of graphics idea by changing the coordinates, geoms, and themes to make my plots visually appealing. I believe that they are representative of the points I am trying to make. 
 
