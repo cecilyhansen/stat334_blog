@@ -21,10 +21,38 @@
     "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
   },
   {
+    "objectID": "posts/blog-post-1/data.html",
+    "href": "posts/blog-post-1/data.html",
+    "title": "Blog Post 1",
+    "section": "",
+    "text": "I am working with an extreme weather attribution study data set that I sourced from the Tidy Tuesday github (https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-08-12/readme.md). The dataset is from an article called ‘Mapped: How climate change affects extreme weather around the world.’ Attribution studies determine how much climate change affects the intensity, frequency, or impact of extreme weather. As climate change impacts become increasingly prevalent, these studies can be a valuable tool in determining human influence on extreme weather events. The data set has 744 observations of 14 variables. I am most interested in looking at ‘event_type’ and ‘cb_region’. I want to look at what kind of extreme events are the most represented in attribution studies. I also want to think about what regions are the most common for attribution studies to be carried out in."
+  },
+  {
+    "objectID": "posts/blog-post-1/data.html#introduction",
+    "href": "posts/blog-post-1/data.html#introduction",
+    "title": "Blog Post 1",
+    "section": "",
+    "text": "I am working with an extreme weather attribution study data set that I sourced from the Tidy Tuesday github (https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-08-12/readme.md). The dataset is from an article called ‘Mapped: How climate change affects extreme weather around the world.’ Attribution studies determine how much climate change affects the intensity, frequency, or impact of extreme weather. As climate change impacts become increasingly prevalent, these studies can be a valuable tool in determining human influence on extreme weather events. The data set has 744 observations of 14 variables. I am most interested in looking at ‘event_type’ and ‘cb_region’. I want to look at what kind of extreme events are the most represented in attribution studies. I also want to think about what regions are the most common for attribution studies to be carried out in."
+  },
+  {
+    "objectID": "posts/blog-post-1/data.html#primary-visualizations",
+    "href": "posts/blog-post-1/data.html#primary-visualizations",
+    "title": "Blog Post 1",
+    "section": "Primary Visualizations",
+    "text": "Primary Visualizations\n\n#install.packages(\"tidyverse\")\nlibrary(ggplot2)\nlibrary(tidyr)\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nattribution_studies &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-08-12/attribution_studies.csv')\n\nRows: 744 Columns: 14\n\n\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (13): event_name, event_period, event_year, study_focus, iso_country_cod...\ndbl  (1): publication_year\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\nVisualization 1 - Event Types\nI chose to make a lollipop plot to represent what types of events are most represented in attribution studies. The data shows that heat and rain & flooding are the two most prevalent extreme weather events that are studied, followed by droughts and storms. We can infer from this that these are the weather events that are of the most concern to researchers. This makes sense because extreme flooding, as well as extreme heat and drought, can be detrimental to humans. These events can cause significant damage to property, agriculture, and cause loss of life. It is interesting to think about what weather events are the most studied and why. Floods and heat are dangerous and costly for humans, but how does the rest of the natural world react?\n\nnew &lt;- attribution_studies|&gt;\n  group_by(event_type) |&gt;\n  summarize(\n    count = n()\n  )\n\nggplot(data = new, aes(x = count, y = event_type)) +\n  geom_segment(aes(xend = count, x = 0, yend = event_type)) +\n  geom_point() +\n  theme_minimal() +\n  labs(x = \"Count\", y = \"Event type\", title = \"Extreme events represented in attribution studies\")\n\n\n\n\n\n\n\n\n\n\nVisualization 2\nMy second graph is a bar plot looking at what regions of the world attribution studies are focused on. The most studied regions are North America, Europe, and eastern/south-eastern Asia. However, North American and European countries are not the places where the most extreme weather events occur. They likely have the most attribution studies because they are the most well-funded to conduct research. In fact, the Global South is much more vulnerable to extreme weather. Undeveloped nations are often the most severely affected - countries like Haiti or the Philippines are prone to intense storms that have only worsened with human-driven climate change. This bar plot actually represents a major gap in the scientific field of extreme weather attribution. It is crucial that research is expanded to include the regions where global climate change is hitting the hardest, so we can understand more about just how much humans are changing the climate.\n\nattribution_studies |&gt;\n  group_by(cb_region) |&gt;\n  summarize(\n    count = n()\n  ) |&gt;\n  ggplot(aes(x = cb_region, y = count)) +\n  geom_col(fill = \"skyblue\") + \n  coord_flip() +\n  theme_minimal() +\n  labs(x = \"Region\", y = \"Count\", title = \"Attribution studies in different regions\")"
+  },
+  {
+    "objectID": "posts/blog-post-1/data.html#conclusion",
+    "href": "posts/blog-post-1/data.html#conclusion",
+    "title": "Blog Post 1",
+    "section": "Conclusion",
+    "text": "Conclusion\nIf I had more time to look at this data, I think it would be interesting to compare it with climate change data, like temperature increase or sea level rise by region. It would be interesting to see if there is an inverse relationship between climate change affects and number of attribution studies. It would also be interesting to observe this data set over time and see if it changes. This was a limited approach to think about extreme weather and there are many more ways to think about it than just attribution studies. However, it is representative of the inequalities present in climate change research. My visualizations connect to class because I utilized the appropriate plots to represent categorical data - lollipop plots and bar plots. I also utilized different grammar of graphics idea by changing the coordinates, geoms, and themes to make my plots visually appealing. I believe that they are representative of the points I am trying to make."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "stat334_blog",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nJan 28, 2026\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJan 25, 2026\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Blog Post 1\n\n\n\n\n\n\n\n\n\n\n\nFeb 5, 2026\n\n\nCecily Hansen\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nJan 28, 2026\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJan 25, 2026\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   }
 ]
