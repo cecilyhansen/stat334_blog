@@ -27,7 +27,7 @@ I chose to make a lollipop plot to show the top 15 most viewed movies on Netflix
 
 ```{r}
 most_popular_movies <- movies |>
-  filter(report == "2025Jan-Jun" |>
+  filter(report == "2025Jan-Jun") |>
   arrange(desc(hours_viewed)) |>
   slice(1:15) |>
   select(title, views, available_globally)
