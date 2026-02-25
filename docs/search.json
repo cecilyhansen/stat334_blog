@@ -2,9 +2,9 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "About This Blog",
     "section": "",
-    "text": "About this blog"
+    "text": "This blog highlights skills I have learned about data visualization throughout the Stat 334 course. It shows my knowledge of appropriate plot usage for categorical and quantitative data. It also demonstrates my skill with changing themes, aesthetics, geoms, coordinates, facets, and more in order to effectively present the data I am working with."
   },
   {
     "objectID": "posts/blog-post-2/data.html",
@@ -81,6 +81,6 @@
     "href": "index.html",
     "title": "stat334_blog",
     "section": "",
-    "text": "Blog Post 2\n\n\n\n\n\n\n\n\n\n\n\nFeb 17, 2026\n\n\nCecily Hansen\n\n\n\n\n\n\n\n\n\n\n\n\nBlog Post 1\n\n\n\n\n\n\n\n\n\n\n\nFeb 5, 2026\n\n\nCecily Hansen\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nJan 28, 2026\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJan 25, 2026\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Netflix Movie Viewing Data Visualizations\n\n\n\n\n\n\n\n\n\n\n\nFeb 17, 2026\n\n\nCecily Hansen\n\n\n\n\n\n\n\n\n\n\n\n\nExtreme Weather Attribution Study Visualizations\n\n\n\n\n\n\n\n\n\n\n\nFeb 5, 2026\n\n\nCecily Hansen\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nJan 28, 2026\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJan 25, 2026\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   }
 ]

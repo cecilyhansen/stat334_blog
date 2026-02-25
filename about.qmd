@@ -1,6 +1,6 @@
 ---
 title: "About This Blog"
-image: profile.jpg
+image: st-lawrence.svg
 about:
   template: jolla
   links:
