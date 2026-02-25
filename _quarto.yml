@@ -3,17 +3,15 @@ project:
   output-dir: docs
 
 website:
-  title: "stat334_blog"
+  title: "Stat 334 (Data Visualization) Blog"
   navbar:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/cecilyhansen
 format:
   html:
-    theme: cosmo
+    theme: minty
     css: styles.css
 
 editor: visual

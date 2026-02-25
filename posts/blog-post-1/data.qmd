@@ -1,5 +1,5 @@
 ---
-title: "Blog Post 1"
+title: "Extreme Weather Attribution Study Visualizations"
 author: "Cecily Hansen"
 date: "2026-02-05"
 format: html

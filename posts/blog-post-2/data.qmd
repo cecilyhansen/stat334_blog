@@ -1,15 +1,13 @@
 ---
-title: "Blog Post 2"
+title: "Netflix Movie Viewing Data Visualizations"
 author: "Cecily Hansen"
 date: "2026-02-17"
 format: html
 ---
 
-
 ## Introduction
 
-I am working with a data set from Tidy Tuesday that explores TV show and movie viewing data from Netflix, which can be found at this link: https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-07-29/readme.md. The data set combines viewing data from late 2023 through the first half of 2025. I am focusing specifically on Netflix movies. 
-The data set has 36121 observations of 8 variables. I am most interested in available_globally, which is a character variable showing whether the movie is available globally or not. I am also interested in the movie release date (release_date), hours spent viewing the movie (hours_viewed), overall views (views), and the movie titles (title). I am interested to see how the performance of globally available movies compares to regionally restricted movies. I also want to explore which movies are the most popular and if recent releases are more viewed than older movies. 
+I am working with a data set from Tidy Tuesday that explores TV show and movie viewing data from Netflix, which can be found at this link: https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-07-29/readme.md. The data set combines viewing data from late 2023 through the first half of 2025. I am focusing specifically on Netflix movies. The data set has 36121 observations of 8 variables. I am most interested in available_globally, which is a character variable showing whether the movie is available globally or not. I am also interested in the movie release date (release_date), hours spent viewing the movie (hours_viewed), overall views (views), and the movie titles (title). I am interested to see how the performance of globally available movies compares to regionally restricted movies. I also want to explore which movies are the most popular and if recent releases are more viewed than older movies.
 
 ## Primary Visualizations
 
@@ -23,7 +21,7 @@ movies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tid
 
 ### Visualization 1 - Most Popular Netflix Movies in 2025
 
-I chose to make a lollipop plot to show the top 15 most viewed movies on Netflix from January to June of 2025. It shows that "Back in Action" was the most viewed movie so far, with over 1.6 billion views globally. The action-comedy film was released in 2025 and stars Jamie Foxx and Cameron Diaz. This was surprising to me, because I personally hadn't seen it or haven't heard it. However, it clearly led the charts in the first half of 2025. Almost all of the films in the top 15 were action, thrillers, or comedy. "Leo" was the only film marketed specifically towards children. It's definitely clear that certain genres dominate the most viewed films on Netflix. 
+I chose to make a lollipop plot to show the top 15 most viewed movies on Netflix from January to June of 2025. It shows that "Back in Action" was the most viewed movie so far, with over 1.6 billion views globally. The action-comedy film was released in 2025 and stars Jamie Foxx and Cameron Diaz. This was surprising to me, because I personally hadn't seen it or haven't heard it. However, it clearly led the charts in the first half of 2025. Almost all of the films in the top 15 were action, thrillers, or comedy. "Leo" was the only film marketed specifically towards children. It's definitely clear that certain genres dominate the most viewed films on Netflix.
 
 ```{r}
 most_popular_movies <- movies |>
@@ -41,7 +39,7 @@ ggplot(data = most_popular_movies, aes(x = views, y = reorder(title, views))) +
 
 ### Visualization 2 - Difference in Average Viewing Hours
 
-I made an error bar plot to show the difference in average viewing hours between films that are globally available and not. Globally available films are able to be watched around the world, while others may be restricted to certain regions. I took the average viewing hours between the two groups, and calculated the standard error to make my plot. It showed that globally available movies were viewed much more frequently than locally restricted ones. This was expected, but I was surpised that there was no overlap. 
+I made an error bar plot to show the difference in average viewing hours between films that are globally available and not. Globally available films are able to be watched around the world, while others may be restricted to certain regions. I took the average viewing hours between the two groups, and calculated the standard error to make my plot. It showed that globally available movies were viewed much more frequently than locally restricted ones. This was expected, but I was surpised that there was no overlap.
 
 ```{r}
 movies_2 <- movies |>
@@ -61,10 +59,9 @@ ggplot(data = movies_2, aes(x = available_globally, y = mean_hours)) +
   labs(x = "Available Globally", y = "Average Hours Viewed", title = "Difference in Average Viewing Hours in 2025 for Globally Available and Regional Movies")
 ```
 
-
 ### Visualization 3 - Impact of Release Date on Number of Views
 
-This plot shows that films watched in 2025 were more frequently released in 2025 instead of prior years. Movies that were released before 2020 had lower views than films released in 2025. This makes sense because people are more likely to watch new releases. However, even older films still had millions of views. Many people enjoy rewatching their favorite movies. The highest views are definitely skewed toward the 2025 releases. 
+This plot shows that films watched in 2025 were more frequently released in 2025 instead of prior years. Movies that were released before 2020 had lower views than films released in 2025. This makes sense because people are more likely to watch new releases. However, even older films still had millions of views. Many people enjoy rewatching their favorite movies. The highest views are definitely skewed toward the 2025 releases.
 
 ```{r}
 ggplot(data = movies, aes(x = release_date, y = views)) +
@@ -73,9 +70,6 @@ ggplot(data = movies, aes(x = release_date, y = views)) +
   labs(x = "Release Date", y = "Views", title = "Movie views in 2025 based on when they were released")
 ```
 
-
 ## Conclusion
 
-If I had more time to look at this data, I think it would be interesting to add a spatial aspect to my analysis. It would be interesting to look at a specific movie and see how many views it got in every country. It would also be interesting to separate the data by specific genres to see which genres get the most views on average. It could also be interesting to compare Netflix movies with movies on different streaming services. It's possible that action and comedy movies are the most popular on Netflix, but different genres like horror or drama might be more popular on HBO. Similarly, children's movies might be more popular on Disney+. 
-My visualizations connect to class because I used the information I learned about geoms, aesthetics, variability, and themes to make my plots. For my second visualization especially, I utilized the information we learned about standard error to make my error bar plot. I believe my plots do a good job of representing the points I made about movies on Netflix. 
-
+If I had more time to look at this data, I think it would be interesting to add a spatial aspect to my analysis. It would be interesting to look at a specific movie and see how many views it got in every country. It would also be interesting to separate the data by specific genres to see which genres get the most views on average. It could also be interesting to compare Netflix movies with movies on different streaming services. It's possible that action and comedy movies are the most popular on Netflix, but different genres like horror or drama might be more popular on HBO. Similarly, children's movies might be more popular on Disney+. My visualizations connect to class because I used the information I learned about geoms, aesthetics, variability, and themes to make my plots. For my second visualization especially, I utilized the information we learned about standard error to make my error bar plot. I believe my plots do a good job of representing the points I made about movies on Netflix.
